@@ -160,7 +160,7 @@ div.conv-form-wrapper:before {
     top: 0;
     left: 0;
     z-index: 2;
-    background: linear-gradient(#fff, transparent);
+    background: linear-gradient(rgba(12, 56, 88, 0.53), transparent);
 }
 @media (max-width: 767px) {
     div.conv-form-wrapper div.wrapper-messages, div.conv-form-wrapper div#messages {
@@ -220,7 +220,7 @@ div.conv-form-wrapper div.options div.option {
     border: 1px solid rgba(6,153,184,0.3);
     display: inline-block;
     margin: 5px;
-    background: #fff;
+    background: rgb(5, 51, 85);
     color: #06c5a6;
     cursor: pointer;
     border-radius: 20px;
@@ -253,8 +253,8 @@ div.conv-form-wrapper  div#messages div.message {
     word-wrap: break-word;
 }
 div.conv-form-wrapper  div#messages div.message.to {
-    background: #efefef;
-    color: #6f6f6f;
+    background: rgba(37, 125, 190, 0.65);
+    color: #ffffff;
     float: left;
     border-top-left-radius: 0;
 }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,24 +13,40 @@
 <body>
 	<section id="demo">
 	    <div class="vertical-align">
+            <img class="logo" src="https://www.pakastronomers.com/sites/default/files/pas-logo-100px.png">
 	        <div class="container">
+                
 	            <div class="row">
+                    
 	                <div class="col-sm-6 col-sm-offset-3 col-xs-offset-0">
 	                    <div class="card no-border">
 	                        <div id="chat" class="conv-form-wrapper">
 	                            <form action="" method="GET" class="hidden">
-	                                <select data-conv-question="Hello! I'm a bot created from a HTML form. Can I show you some features? (this question comes from a select)" name="first-question">
+	                                <select data-callback="storeState" data-conv-question="Hi, welcome to Pak Astronomers Astrobot would you like to continue?" name="first-question">
 	                                    <option value="yes">Yes</option>
-	                                    <option value="sure">Sure!</option>
+	                                    <option value="no">No</option>
 	                                </select>
-	                                <input type="text" name="name" data-conv-question="Alright! First, tell me your full name, please.|Okay! Please, tell me your name first.">
-	                                <input type="text" data-conv-question="Howdy, {name}:0! It's a pleasure to meet you. (note that this question doesn't expect any answer)" data-no-answer="true">
-	                                <input type="text" data-conv-question="This plugin supports multi-select too. Let's see an example." data-no-answer="true">
-	                                <select name="multi[]" data-conv-question="What kind of music do you like?" multiple>
-	                                    <option value="Rock">Rock</option>
-	                                    <option value="Pop">Pop</option>
-	                                    <option value="Country">Country</option>
-	                                    <option value="Classic">Classic</option>
+                                    
+                                    
+                                    <div data-conv-fork="first-question">
+	                                    <div data-conv-case="yes">
+	                                        <input type="text" name="name" data-conv-question="Alright! First, tell me your full name, please.|Okay! Please, tell me your name first.|What is your full name?">
+                                            <input type="text" data-conv-question="Hi, {name}:0! It's a pleasure to meet you." data-no-answer="true">
+	                                    </div>
+	                                    <div data-conv-case="no">
+		                                   <input type="text" data-conv-question="ok bye!" data-no-answer="true">
+                                            <select data-conv-question="Please visit our website for more information.">
+											<option value="google" data-callback="pas">PAS</option>
+                                            <option value="close" data-callback="close">Close</option>   
+									</select>
+	                                    </div>
+	                                </div>
+                                    
+                            
+	                                <select name="multi[]" data-conv-question="Which Celestial Object do you want to know about?" multiple>
+	                                    <option value="Rock">Planets</option>
+	                                    <option value="Pop">Stars</option>
+	                                    <option value="Country">DSO's</option>
 	                                </select>
 	                                <select name="programmer" data-callback="storeState" data-conv-question="So, are you a programmer? (this question will fork the conversation based on your answer)">
 	                                    <option value="yes">Yes</option>
@@ -77,9 +94,15 @@
 			window.open("https://google.com");
 			ready();
 		}
-		function bing(stateWrapper, ready) {
-			window.open("https://bing.com");
+        
+        function pas(stateWrapper, ready) {
+			window.open("https://www.pakastronomers.com/");
 			ready();
+		}
+        
+        function close() {
+			  window.open('', '_parent', '');
+              window.close();
 		}
 		var rollbackTo = false;
 		var originalState = false;
@@ -111,9 +134,11 @@
 	</script>
 	<script>
 		jQuery(function($){
-			convForm = $('#chat').convform({selectInputStyle: 'disable'});
+			convForm = $('#chat').convform({selectInputStyle: 'show',placeHolder:'Enter here',timeOutFirstQuestion:'1000'});
 			console.log(convForm);
+            
 		});
+        
 	</script>
 </body>
 </html>
